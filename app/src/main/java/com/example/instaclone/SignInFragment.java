@@ -21,7 +21,6 @@ public class SignInFragment extends Fragment {
     private EditText username, password;
     private Button logInBtn;
     private TextView dontHaveAnAccount;
-    private ProgressBar progressBar;
     private FrameLayout parentFrameLayout;
 
     public SignInFragment() {
@@ -50,7 +49,6 @@ public class SignInFragment extends Fragment {
         password = view.findViewById(R.id.password);
         logInBtn = view.findViewById(R.id.login_btn);
         dontHaveAnAccount = view.findViewById(R.id.dont_have_account_tv);
-        progressBar = view.findViewById(R.id.progressbar);
 
         return view;
     }
