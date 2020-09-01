@@ -115,10 +115,15 @@ public class SignInFragment extends Fragment {
     }
 
     private void checkInputs() {
-        if (username.getText().toString().equals("")) {
+        if (!username.getText().toString().equals("")) {
+            if (!password.getText().toString().equals("")) {
+                logInBtn.setEnabled(true);
+                logInBtn.setAlpha(1f);
+            } else {
+                password.setError("required");
+            }
+        } else {
             username.setError("required");
-        } else if (password.getText().toString().equals("")) {
-            password.setError("required");
         }
     }
 

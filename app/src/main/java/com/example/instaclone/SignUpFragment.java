@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,14 +153,23 @@ public class SignUpFragment extends Fragment {
     }
 
     private void checkInputs() {
-        if (username.getText().toString().equals("")) {
+        if (!username.getText().toString().equals("")) {
+            if (!email.getText().toString().equals("")) {
+                if (!password.getText().toString().equals("")) {
+                    if (!confirmPassword.getText().toString().equals("")) {
+                        signUpBtn.setEnabled(true);
+                        signUpBtn.setAlpha(1f);
+                    } else {
+                        confirmPassword.setError("required");
+                    }
+                } else {
+                    password.setError("required");
+                }
+            } else {
+                email.setError("required");
+            }
+        } else {
             username.setError("required");
-        } else if (email.getText().toString().equals("")) {
-            email.setError("required");
-        } else if (password.getText().toString().equals("")) {
-            password.setError("required");
-        } else if (confirmPassword.getText().toString().equals("")) {
-            confirmPassword.setError("required");
         }
     }
 
